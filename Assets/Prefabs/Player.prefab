@@ -148,7 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 50, y: 50}
-  areaAttacks: 0
+  explosionPrefab: {fileID: 5271230643407109362, guid: 30d436ad8ad3ead3cbf7372ad00a44f7,
+    type: 3}
 --- !u!114 &5165039913446021901
 MonoBehaviour:
   m_ObjectHideFlags: 0

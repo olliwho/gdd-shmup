@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Handle hitpoints and damages
@@ -15,6 +17,22 @@ public class HealthScript : MonoBehaviour
   /// </summary>
   public bool isEnemy = true;
 
+  private Text hpText;
+  private void Start()
+  {
+    if (!isEnemy)
+    {
+      var scoreCanvas = GameObject.Find("ScoreCanvas");
+      Text[] texts = scoreCanvas.GetComponentsInChildren<Text>();
+      foreach (var t in texts)
+      {
+        if (t.name == "Lives") hpText = t;
+      }
+
+      hpText.text = hp.ToString();
+    }
+  }
+
   /// <summary>
   /// Inflicts damage and check if the object should be destroyed
   /// </summary>
@@ -22,6 +40,10 @@ public class HealthScript : MonoBehaviour
   public void Damage(int damageCount)
   {
     hp -= damageCount;
+    if (!isEnemy)
+    {
+      hpText.text = hp.ToString();
+    }
 
     if (hp <= 0)
     {
@@ -67,11 +89,16 @@ public class HealthScript : MonoBehaviour
         }
         else
         {
-          var explosionTransform = Instantiate(shot.ExplosionPrefab) as Transform;
-          // Assign position
-          explosionTransform.position = transform.position;
+          ExplosionAnimation(shot.ExplosionPrefab);
         }
       }
     }
+  }
+
+  public void ExplosionAnimation(Transform explosion)
+  {
+    var explosionTransform = Instantiate(explosion) as Transform;
+    // Assign position
+    explosionTransform.position = transform.position;
   }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// Player controller and behavior
@@ -9,13 +10,14 @@ public class PlayerScript : MonoBehaviour
     /// 1 - The speed of the ship
     /// </summary>
     public Vector2 speed = new Vector2(10, 10);
+    public Transform explosionPrefab;
 
     // 2 - Store the movement and the component
     private Vector2 movement;
     private Rigidbody2D rigidbodyComponent;
     
-    //-----------
-
+    //----------
+    
     void Update()
     {
         // 3 - Retrieve axis information
@@ -101,6 +103,9 @@ public class PlayerScript : MonoBehaviour
 			// Kill the enemy
 			HealthScript enemyHealth = enemy.GetComponent<HealthScript>();
 			if (enemyHealth != null) enemyHealth.Damage(enemyHealth.hp);
+			
+			//make explosion
+			enemyHealth.ExplosionAnimation(explosionPrefab);
 
 			damagePlayer = true;
 		}
@@ -131,6 +136,6 @@ public class PlayerScript : MonoBehaviour
 	{
 		// Game Over.
 		var gameOver = FindObjectOfType<GameOverScript>();
-		gameOver.ShowButtons();
+		gameOver.ShowGui();
 	}
 }
