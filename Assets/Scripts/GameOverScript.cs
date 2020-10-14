@@ -9,7 +9,7 @@ public class GameOverScript : MonoBehaviour
     private Button[] buttons;
     private Text[] texts;
     private Image canvasImage;
-    private GameObject scripts;
+    private ScoreScript scoreScript;
     private GameObject scoreCanvas;
     private Color bgc;
 
@@ -19,7 +19,7 @@ public class GameOverScript : MonoBehaviour
         buttons = GetComponentsInChildren<Button>();
         texts = GetComponentsInChildren<Text>();
         canvasImage = GetComponentInChildren<Image>();
-        scripts = GameObject.Find("Scripts");
+        scoreScript = GameObject.Find("Scripts").GetComponent<ScoreScript>();
         scoreCanvas = GameObject.Find("ScoreCanvas");
         bgc = new Color(0.0f, 0.0f, 0.0f, 0.9f);
         // Disable them
@@ -42,7 +42,6 @@ public class GameOverScript : MonoBehaviour
 
     public void ShowGui()
     {
-        var score =  scripts.GetComponent<ScoreScript>();
         foreach (var b in buttons)
         {
             b.gameObject.SetActive(true);
@@ -50,8 +49,8 @@ public class GameOverScript : MonoBehaviour
         foreach (var t in texts)
         {
             t.gameObject.SetActive(true);
-            if (t.name == "Score") t.text = score.score.ToString();
-            if (t.name == "Highscore") t.text = "Highscore: " + score.highscore;
+            if (t.name == "Score") t.text = scoreScript.score.ToString();
+            if (t.name == "Highscore") t.text = "Highscore: " + scoreScript.highscore;
             
         }
 

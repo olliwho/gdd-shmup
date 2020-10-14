@@ -1,17 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour
 {
 
-    public int score = 0;
-    public int highscore = 0;
+    public int score;
+    public int highscore;
     private GameObject scoreCanvas;
     private Text scoreText;
-    void Start()
+    
+    
+    //reset highscore
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void OnBeforeSceneLoadRuntimeMethod()
     {
+        PlayerPrefs.SetInt("highscore", 0);
+    }
+
+    void Awake()
+    {
+        highscore = PlayerPrefs.GetInt("highscore");
         scoreCanvas = GameObject.Find("ScoreCanvas");
         Text[] texts = scoreCanvas.GetComponentsInChildren<Text>();
         foreach (var t in texts)
@@ -26,5 +34,6 @@ public class ScoreScript : MonoBehaviour
         score += update;
         if (score > highscore) highscore = score;
         scoreText.text = score.ToString();
+        PlayerPrefs.SetInt("highscore", highscore);
     }
 }

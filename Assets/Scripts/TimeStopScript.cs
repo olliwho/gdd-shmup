@@ -35,8 +35,8 @@ public class TimeStopScript : MonoBehaviour
             }
             else
             {
-                Restart();
                 stopped = false;
+                Restart();
             }
         }
     }
@@ -66,7 +66,6 @@ public class TimeStopScript : MonoBehaviour
         
         //stop all bullets moving
         ShotScript[] shots = FindObjectsOfType<ShotScript>();
-        Debug.Log(shots.Length);
         foreach (var shot in shots)
         {
             MoveScript move = shot.gameObject.GetComponent<MoveScript>();
@@ -87,7 +86,7 @@ public class TimeStopScript : MonoBehaviour
         }
         foreach (var weapon in allWeapons)
         {
-            weapon.enabled = true;
+            if(weapon) weapon.enabled = true;
         }
         foreach (var move in shotsMoving)
         {
