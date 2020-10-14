@@ -21,7 +21,7 @@ public class GameOverScript : MonoBehaviour
         canvasImage = GetComponentInChildren<Image>();
         scoreScript = GameObject.Find("Scripts").GetComponent<ScoreScript>();
         scoreCanvas = GameObject.Find("ScoreCanvas");
-        bgc = new Color(0.0f, 0.0f, 0.0f, 0.9f);
+        bgc = new Color(0.0f, 0.0f, 0.0f, 0.95f);
         // Disable them
         HideGui();
     }

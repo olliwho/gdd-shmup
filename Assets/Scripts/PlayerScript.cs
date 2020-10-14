@@ -65,8 +65,10 @@ public class PlayerScript : MonoBehaviour
 			}
 		}
 		
+		var currentPos = transform.position;
+		
 		// 6 - Make sure we are not outside the camera bounds
-		var dist = (transform.position - Camera.main.transform.position).z;
+		var dist = (currentPos - Camera.main.transform.position).z;
 
 		var leftBorder = Camera.main.ViewportToWorldPoint(
 		  new Vector3(0, 0, dist)
@@ -85,9 +87,9 @@ public class PlayerScript : MonoBehaviour
 		).y;
 
 		transform.position = new Vector3(
-		  Mathf.Clamp(transform.position.x, leftBorder, rightBorder),
-		  Mathf.Clamp(transform.position.y, topBorder, bottomBorder),
-		  transform.position.z
+		  Mathf.Clamp(currentPos.x, leftBorder, rightBorder),
+		  Mathf.Clamp(currentPos.y, topBorder, bottomBorder),
+		  currentPos.z
 		);
 
     }
@@ -122,7 +124,7 @@ public class PlayerScript : MonoBehaviour
 		// Damage the player
 		if (damagePlayer)
 		{
-			HealthScript playerHealth = this.GetComponent<HealthScript>();
+			HealthScript playerHealth = GetComponent<HealthScript>();
 			if (playerHealth != null) playerHealth.Damage(1);
 		}
 		
@@ -160,7 +162,7 @@ public class PlayerScript : MonoBehaviour
 	void OnDestroy()
 	{
 		// Game Over.
-		var gameOver = FindObjectOfType<GameOverScript>();
-		gameOver.ShowGui();
+		var gameOver = FindObjectOfType<GameOverScript>(); 
+		if(gameOver) gameOver.ShowGui();
 	}
 }

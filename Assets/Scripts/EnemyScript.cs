@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -8,7 +9,7 @@ public class EnemyScript : MonoBehaviour
     public bool hasSpawn;
     private MoveScript moveScript;
     private WeaponScript[] weapons;
-    private Collider2D coliderComponent;
+    private Collider2D colliderComponent;
     private SpriteRenderer rendererComponent;
 
     void Awake()
@@ -19,7 +20,7 @@ public class EnemyScript : MonoBehaviour
         // Retrieve scripts to disable when not spawn
         moveScript = GetComponent<MoveScript>();
 
-        coliderComponent = GetComponent<Collider2D>();
+        colliderComponent = GetComponent<Collider2D>();
 
         rendererComponent = GetComponent<SpriteRenderer>();
     }
@@ -31,7 +32,7 @@ public class EnemyScript : MonoBehaviour
 
         // Disable everything
         // -- collider
-        coliderComponent.enabled = false;
+        colliderComponent.enabled = false;
         // -- Moving
         moveScript.enabled = false;
         // -- Shooting
@@ -77,7 +78,7 @@ public class EnemyScript : MonoBehaviour
 
         // Enable everything
         // -- Collider
-        coliderComponent.enabled = true;
+        colliderComponent.enabled = true;
         // -- Moving
         moveScript.enabled = true;
         // -- Shooting
@@ -94,5 +95,11 @@ public class EnemyScript : MonoBehaviour
         {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
+    }
+
+    private void OnDestroy()
+    {
+        SpawnScript ss = FindObjectOfType<SpawnScript>();
+        if(ss) ss.currentEnemy--;
     }
 }

@@ -15,14 +15,19 @@ public class TimeStopScript : MonoBehaviour
     private List<WeaponScript> allWeapons;
     private List<MoveScript> shotsMoving;
 
+    private SpawnScript ss;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         scollers = FindObjectsOfType<ScrollingScript>();
         allWeapons = new List<WeaponScript>();
         shotsMoving = new List<MoveScript>();
+        ss = FindObjectOfType<SpawnScript>();
+
         cooldown = 0.0f;
+        
+        Destroy(gameObject, 30); // 20sec
     }
 
     private void Update()
@@ -73,6 +78,7 @@ public class TimeStopScript : MonoBehaviour
             shotsMoving.Add(move);
         }
 
+        ss.cooldown += duration;
         cooldown = duration;
         stopped = true;
     }
@@ -95,5 +101,11 @@ public class TimeStopScript : MonoBehaviour
         
         
         Destroy(gameObject);
+    }
+    
+    private void OnDestroy()
+    {
+        SpawnScript ss = FindObjectOfType<SpawnScript>();
+        if(ss) ss.currentTime--;
     }
 }
