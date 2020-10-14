@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Object = UnityEngine.Object;
 
 /// <summary>
 /// Player controller and behavior
@@ -16,9 +18,15 @@ public class PlayerScript : MonoBehaviour
     // 2 - Store the movement and the component
     private Vector2 movement;
     private Rigidbody2D rigidbodyComponent;
+    private AmmoCounterScript ammoCounter;
     
     //----------
-    
+
+    private void Start()
+    {
+	    ammoCounter = FindObjectOfType<AmmoCounterScript>();
+    }
+
     void Update()
     {
         // 3 - Retrieve axis information
@@ -127,6 +135,7 @@ public class PlayerScript : MonoBehaviour
 			if(weapon)
 			{
 				weapon.ammunition += 1;
+				ammoCounter.IncreaseCounter();
 			}
 			Destroy(ammo.gameObject);
 		}

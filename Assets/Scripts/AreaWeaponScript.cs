@@ -19,7 +19,9 @@ public class AreaWeaponScript : MonoBehaviour
   /// </summary>
   public float shootingRate = 0.25f;
   
-  public int ammunition = 0;
+  public int ammunition;
+
+  private AmmoCounterScript ammoCounter;
 
   //--------------------------------
   // 2 - Cooldown
@@ -30,6 +32,7 @@ public class AreaWeaponScript : MonoBehaviour
   void Start()
   {
     shootCooldown = 0f;
+    ammoCounter = FindObjectOfType<AmmoCounterScript>();
   }
 
   void Update()
@@ -71,8 +74,10 @@ public class AreaWeaponScript : MonoBehaviour
       MoveScript move = shotTransform.gameObject.GetComponent<MoveScript>();
       if (move != null)
       {
-        move.direction = this.transform.right; // towards in 2D space is the right of the sprite
+        move.direction = transform.right; // towards in 2D space is the right of the sprite
       }
+      
+      ammoCounter.DecreaseCounter();
     }
   }
 
