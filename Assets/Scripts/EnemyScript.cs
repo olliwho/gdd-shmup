@@ -5,7 +5,7 @@ using UnityEngine;
 /// </summary>
 public class EnemyScript : MonoBehaviour
 {
-    private bool hasSpawn;
+    public bool hasSpawn;
     private MoveScript moveScript;
     private WeaponScript[] weapons;
     private Collider2D coliderComponent;

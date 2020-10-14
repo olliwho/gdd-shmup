@@ -18,6 +18,7 @@ public class HealthScript : MonoBehaviour
   public bool isEnemy = true;
 
   private Text hpText;
+  private ScoreScript scoreScript;
   private void Start()
   {
     if (!isEnemy)
@@ -31,6 +32,10 @@ public class HealthScript : MonoBehaviour
 
       hpText.text = hp.ToString();
     }
+    else
+    {
+      scoreScript = FindObjectOfType<ScoreScript>();
+    }
   }
 
   /// <summary>
@@ -43,6 +48,10 @@ public class HealthScript : MonoBehaviour
     if (!isEnemy)
     {
       hpText.text = hp.ToString();
+    }
+    else
+    {
+      scoreScript.UpdateScore(10);
     }
 
     if (hp <= 0)
@@ -73,7 +82,6 @@ public class HealthScript : MonoBehaviour
           Vector3 center = transform.position;
           
           Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, shot.explosionArea);
-          Debug.Log(hitColliders.Length);
           foreach (var hitCollider in hitColliders)
           {
             // Collision with enemy

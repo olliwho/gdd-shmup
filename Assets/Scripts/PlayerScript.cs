@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 /// <summary>
@@ -128,6 +129,21 @@ public class PlayerScript : MonoBehaviour
 				weapon.ammunition += 1;
 			}
 			Destroy(ammo.gameObject);
+		}
+		
+		// Collision with time stop
+		TimeStopScript timeStop = collision.gameObject.GetComponent<TimeStopScript>();
+		if(timeStop != null)
+		{
+			// disable box collider
+			BoxCollider2D bc = timeStop.gameObject.GetComponent<BoxCollider2D>();
+			if (bc != null) bc.enabled = false;
+
+			// disable renderer
+			SpriteRenderer sr = timeStop.gameObject.GetComponent<SpriteRenderer>();
+			if (sr != null) sr.enabled = false;
+			
+			timeStop.StopTime();
 		}
 
 	}

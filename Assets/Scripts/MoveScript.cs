@@ -17,6 +17,8 @@ public class MoveScript : MonoBehaviour
     /// </summary>
     public Vector2 direction = new Vector2(-1, 0);
 
+    public bool paused;
+
     private Vector2 movement;
     private Rigidbody2D rigidbodyComponent;
 
@@ -31,8 +33,15 @@ public class MoveScript : MonoBehaviour
     void FixedUpdate()
     {
         if (rigidbodyComponent == null) rigidbodyComponent = GetComponent<Rigidbody2D>();
-
-        // Apply movement to the rigidbody
-        rigidbodyComponent.velocity = movement;
+        
+        if (!paused)
+        {
+            // Apply movement to the rigidbody
+            rigidbodyComponent.velocity = movement;
+        }
+        else
+        {
+            rigidbodyComponent.velocity = new Vector2(0f, 0f);
+        }
     }
 }
