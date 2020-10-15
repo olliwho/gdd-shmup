@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotPrefab: {fileID: 8299879731336327119, guid: 8b74974320331bcc4a34104334cbb78f,
     type: 3}
-  shootingRate: 0.75
+  shootingRate: 5
 --- !u!1 &6299704808668294722
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 2427955528680694415}
   - component: {fileID: 7263431179465612823}
   m_Layer: 0
-  m_Name: Poulpi
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,8 @@ SpriteRenderer:
   m_SortingLayerID: -1901457487
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2abcbbdfc2c8ea739b71246763a0761a, type: 3}
+  m_Sprite: {fileID: -824856036745667788, guid: a66345fe0e2164a43b89946299f5c8e0,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,18 +147,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0039670467, y: 0.043633223}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.88, y: 4.14}
+    oldSize: {x: 3.25, y: 3.38}
     newSize: {x: 5.88, y: 4.14}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 2.3102098, y: 2.3260746}
   m_EdgeRadius: 0
 --- !u!50 &3536057513071524927
 Rigidbody2D:
@@ -194,6 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 10}
   direction: {x: -1, y: 0}
+  paused: 0
 --- !u!114 &2427955528680694415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,3 +222,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66b288f465d2de46900570e7835b84c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasSpawn: 0

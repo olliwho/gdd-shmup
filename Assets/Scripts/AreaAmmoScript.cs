@@ -8,7 +8,7 @@ public class AreaAmmoScript : MonoBehaviour
     private Renderer rendererComponent;
     void Start()
     {
-        Destroy(gameObject, 35); // 20sec
+        Destroy(gameObject, 25); // 20sec
     }
     
     private void OnDestroy()

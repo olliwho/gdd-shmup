@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6968574358654295514}
   - component: {fileID: 6968574358654295333}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: FireEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.7140361, g: 0.9433962, b: 0.20024922, a: 0.98039216}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1361,9 +1361,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.97156787, b: 0.023584902, a: 1}
-        key1: {r: 1, g: 0.47843266, b: 0, a: 0}
-        key2: {r: 1, g: 0.30158746, b: 0.04705882, a: 0}
+        key0: {r: 0.6685324, g: 1, b: 0.02352941, a: 1}
+        key1: {r: 0.4206059, g: 1, b: 0, a: 0}
+        key2: {r: 0.27378333, g: 1, b: 0.04705882, a: 0}
         key3: {r: 1, g: 1, b: 1, a: 0}
         key4: {r: 1, g: 1, b: 1, a: 0}
         key5: {r: 1, g: 1, b: 1, a: 0}

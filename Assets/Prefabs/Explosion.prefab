@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8049977889783528601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.16, y: -0.35, z: -0.49414062}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 1175916145
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1b41f159a3fd23d2d804c8a2641a7996, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4265e27a004223090adf6c8f13b39167, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,4 +116,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2132726023a2b30b3d67a8c45915a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExplosionPrefab: {fileID: 0}
