@@ -54,14 +54,14 @@ public class SpawnScript : MonoBehaviour
         }
         if (currentAmmo < maxAmmo)
         {
-            Vector2 spawnPoint = new Vector2(Random.Range(0, right), Random.Range(-(height/2), (height/2)));
+            Vector2 spawnPoint = new Vector2(Random.Range(-right/2, right), Random.Range(-(height/2), (height/2)));
             var ammoTransform = Instantiate(ammoPrefab);
             ammoTransform.position = spawnPoint;
             currentAmmo++;
         }
         if (currentTime < maxTime)
         {
-            Vector2 spawnPoint = new Vector2(Random.Range(0, right), Random.Range(-(height/2), (height/2)));
+            Vector2 spawnPoint = new Vector2(Random.Range(-right/2, right), Random.Range(-(height/2), (height/2)));
             var timeTransform = Instantiate(timeStopPrefab);
             timeTransform.position = spawnPoint;
             currentTime++;

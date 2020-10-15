@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -61,12 +62,12 @@ public class GameOverScript : MonoBehaviour
     public void ExitToMenu()
     {
         // Reload the level
-        Application.LoadLevel("Menu");
+        SceneManager.LoadScene("Menu");
     }
 
     public void RestartGame()
     {
         // Reload the level
-        Application.LoadLevel("Stage1");
+        SceneManager.LoadScene("Stage1");
     }
 }
