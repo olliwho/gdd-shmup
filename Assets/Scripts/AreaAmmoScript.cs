@@ -5,12 +5,21 @@ using UnityEngine;
 
 public class AreaAmmoScript : MonoBehaviour
 {
-    private Renderer rendererComponent;
+    private SpriteRenderer rendererComponent;
     void Start()
     {
-        Destroy(gameObject, 25); // 20sec
+        // Destroy(gameObject, 25); // 20sec
+        rendererComponent = GetComponent<SpriteRenderer>();
     }
-    
+
+    private void Update()
+    {
+        if (!rendererComponent.IsVisibleFrom(Camera.main))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnDestroy()
     {
         SpawnScript ss = FindObjectOfType<SpawnScript>();

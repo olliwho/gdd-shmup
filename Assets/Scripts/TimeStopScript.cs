@@ -15,6 +15,8 @@ public class TimeStopScript : MonoBehaviour
     private List<WeaponScript> allWeapons;
     private List<MoveScript> shotsMoving;
 
+    private SpriteRenderer rendererComponent;
+
     private SpawnScript ss;
 
     // Start is called before the first frame update
@@ -24,6 +26,8 @@ public class TimeStopScript : MonoBehaviour
         allWeapons = new List<WeaponScript>();
         shotsMoving = new List<MoveScript>();
         ss = FindObjectOfType<SpawnScript>();
+
+        rendererComponent = GetComponent<SpriteRenderer>();
 
         cooldown = 0.0f;
         
@@ -43,6 +47,11 @@ public class TimeStopScript : MonoBehaviour
                 stopped = false;
                 Restart();
             }
+        }
+        
+        if (!rendererComponent.IsVisibleFrom(Camera.main))
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -105,7 +114,6 @@ public class TimeStopScript : MonoBehaviour
     
     private void OnDestroy()
     {
-        SpawnScript ss = FindObjectOfType<SpawnScript>();
         if(ss) ss.currentTime--;
     }
 }

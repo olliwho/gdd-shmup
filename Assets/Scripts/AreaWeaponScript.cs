@@ -54,6 +54,7 @@ public class AreaWeaponScript : MonoBehaviour
   {
     if (CanAttack)
     {
+      SoundEffectsHelper.Instance.MakeShotSound();
       shootCooldown = shootingRate;
       ammunition -= 1;
 

@@ -78,6 +78,8 @@ public class HealthScript : MonoBehaviour
         {
           // 'Splosion!
           SpecialEffectsHelper.Instance.Explosion(transform.position);
+          SoundEffectsHelper.Instance.MakeExplosionSound();
+          
           Vector3 center = transform.position;
           
           Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, shot.explosionArea);
@@ -92,11 +94,11 @@ public class HealthScript : MonoBehaviour
               if (enemyHealth != null) enemyHealth.Damage(enemyHealth.hp);
             }
           }
-          
         }
         else
         {
           ExplosionAnimation(shot.ExplosionPrefab);
+          SoundEffectsHelper.Instance.MakeDamageSound();
         }
       }
     }
