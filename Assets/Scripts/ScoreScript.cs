@@ -8,6 +8,7 @@ public class ScoreScript : MonoBehaviour
     public int highscore;
     private GameObject scoreCanvas;
     private Text scoreText;
+    private SpawnScript ss;
     
     
     //reset highscore
@@ -26,14 +27,25 @@ public class ScoreScript : MonoBehaviour
         {
             if (t.name == "Score") scoreText = t;
         }
+        ss = FindObjectOfType<SpawnScript>();
     }
 
 
     public void UpdateScore(int update)
     {
         score += update;
-        if (score > highscore) highscore = score;
         scoreText.text = score.ToString();
-        PlayerPrefs.SetInt("highscore", highscore);
+        if (score > highscore)
+        {
+            highscore = score;
+            PlayerPrefs.SetInt("highscore", highscore);
+        }
+        
+        //make it harder
+        if (score % 50 == 0)
+        {
+            ss.maxEnemy += 1;
+            ss.cooldown -= 0.5f;
+        }
     }
 }

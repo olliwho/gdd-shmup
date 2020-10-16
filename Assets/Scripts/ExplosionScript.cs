@@ -8,9 +8,9 @@ public class ExplosionScript : MonoBehaviour
 {
     void Start()
     {
-        StartCoroutine(FadeTo(0.0f, 2.0f));
+        StartCoroutine(FadeTo(0.0f, 0.5f));
         // 2 - Limited time to live to avoid any leak
-        Destroy(gameObject, 3); // 2sec
+        Destroy(gameObject, 1f); // 2sec
     }
     
     IEnumerator FadeTo(float aValue, float aTime)

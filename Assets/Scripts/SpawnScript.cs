@@ -23,7 +23,7 @@ public class SpawnScript : MonoBehaviour
     private void Start()
     {
         Camera cam = Camera.main;
-        if (cam)
+        if (cam != null)
         {
             height = 2f * cam.orthographicSize;
             width = height * cam.aspect;

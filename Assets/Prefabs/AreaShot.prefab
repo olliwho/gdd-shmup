@@ -124,7 +124,7 @@ MonoBehaviour:
   areaDamage: 1
   ExplosionPrefab: {fileID: 5271230643407109362, guid: 30d436ad8ad3ead3cbf7372ad00a44f7,
     type: 3}
-  explosionArea: 1
+  explosionArea: 2
 --- !u!114 &6445508209370708257
 MonoBehaviour:
   m_ObjectHideFlags: 0
