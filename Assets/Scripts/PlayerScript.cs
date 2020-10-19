@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour
 		bool shoot = Input.GetButtonDown("Fire1");
 		//shoot |= Input.GetButtonDown("Fire2");
 		// Careful: For Mac users, ctrl + arrow is a bad idea
-		bool areaShoot = Input.GetButtonDown("Fire2");
+		bool areaShoot = Input.GetButtonDown("Fire3");
 		//areaShoot |= Input.GetButtonDown("Fire1");
 
 		if (shoot)
@@ -48,7 +48,6 @@ public class PlayerScript : MonoBehaviour
 			{
 				// false because the player is not an enemy
 				weapon.Attack(false);
-				SoundEffectsHelper.Instance.MakeShotSound();
 			}
 		}
 		

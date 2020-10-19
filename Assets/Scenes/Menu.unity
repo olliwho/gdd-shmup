@@ -954,8 +954,8 @@ MonoBehaviour:
   m_Text: 'Use the WASD keys to control the syringe and space (or left click) to
     shoot the virus!
 
-    Collect pills for special attacks (alt or right click),
-    and hourglasses to stop the time! '
+    Collect pills for special attacks (shift), and hourglasses
+    to stop the time! '
 --- !u!222 &1760988672
 CanvasRenderer:
   m_ObjectHideFlags: 0

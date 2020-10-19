@@ -53,23 +53,23 @@ public class WeaponScript : MonoBehaviour
 
       var shotTransform = Instantiate(shotPrefab) as Transform;
 
-
       // Assign position
       shotTransform.position = transform.position;
 
       // The is enemy property
       ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
-      if (shot != null)
+      if (shot)
       {
         shot.isEnemyShot = isEnemy;
       }
 
       // Make the weapon shot always towards it
       MoveScript move = shotTransform.gameObject.GetComponent<MoveScript>();
-      if (move != null)
+      if (move)
       {
         move.direction = this.transform.right; // towards in 2D space is the right of the sprite
       }
+      if(!isEnemy) SoundEffectsHelper.Instance.MakeShotSound();
     }
   }
 
