@@ -15,6 +15,7 @@ public class SpawnScript : MonoBehaviour
     public int currentTime = 0;
 
     public float cooldown;
+    public bool stop = false;
     
     private float height;
     private float width;
@@ -23,7 +24,7 @@ public class SpawnScript : MonoBehaviour
     private void Start()
     {
         Camera cam = Camera.main;
-        if (cam != null)
+        if (cam)
         {
             height = 2f * cam.orthographicSize;
             width = height * cam.aspect;
@@ -35,7 +36,7 @@ public class SpawnScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (cooldown > 0)
+        if (cooldown > 0 || stop)
         {
             cooldown -= Time.deltaTime;
             return;
@@ -54,14 +55,14 @@ public class SpawnScript : MonoBehaviour
         }
         if (currentAmmo < maxAmmo)
         {
-            Vector2 spawnPoint = new Vector2(Random.Range(-right/2, right), Random.Range(-(height/2), (height/2)));
+            Vector2 spawnPoint = new Vector2(right, Random.Range(-(height/2), (height/2)));
             var ammoTransform = Instantiate(ammoPrefab);
             ammoTransform.position = spawnPoint;
             currentAmmo++;
         }
         if (currentTime < maxTime)
         {
-            Vector2 spawnPoint = new Vector2(Random.Range(-right/2, right), Random.Range(-(height/2), (height/2)));
+            Vector2 spawnPoint = new Vector2(right, Random.Range(-(height/2), (height/2)));
             var timeTransform = Instantiate(timeStopPrefab);
             timeTransform.position = spawnPoint;
             currentTime++;

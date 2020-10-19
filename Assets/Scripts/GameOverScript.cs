@@ -54,9 +54,45 @@ public class GameOverScript : MonoBehaviour
             if (t.name == "Highscore") t.text = "Highscore: " + scoreScript.highscore;
             
         }
+        StopTime();
 
         canvasImage.color = bgc;
         scoreCanvas.SetActive(false);
+    }
+    
+    public void StopTime()
+    {
+        var ss = FindObjectOfType<SpawnScript>();
+        ss.stop = true;
+        
+        var scollers = FindObjectsOfType<ScrollingScript>();
+        // stop all scrollers
+        foreach (var scroller in scollers)
+        {
+            scroller.enabled = false;
+        }
+
+        // stop all enemys shooting
+        EnemyScript[] enemies = FindObjectsOfType<EnemyScript>();
+        foreach (var enemy in enemies)
+        {
+            if (enemy.hasSpawn)
+            {
+                WeaponScript[] weapons = enemy.gameObject.GetComponentsInChildren<WeaponScript>();
+                foreach (var weapon in weapons)
+                {
+                    weapon.enabled = false;
+                }
+            }
+        }
+        
+        //stop all bullets moving
+        ShotScript[] shots = FindObjectsOfType<ShotScript>();
+        foreach (var shot in shots)
+        {
+            MoveScript move = shot.gameObject.GetComponent<MoveScript>();
+            move.paused = true;
+        }
     }
 
     public void ExitToMenu()

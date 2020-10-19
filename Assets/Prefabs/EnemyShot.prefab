@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1175916145
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f26b08149e6d13fc6b0d166fceea4e6f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b37e284c9504d61c8d1fcbe09ccfded, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
   areaDamage: 0
   ExplosionPrefab: {fileID: 5271230643407109362, guid: 30d436ad8ad3ead3cbf7372ad00a44f7,
     type: 3}
-  explosionArea: 2
+  explosionArea: 1
 --- !u!114 &174279281162372268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b23c5098f8809e8a3723f37acce294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 5, y: 10}
+  speed: {x: 3, y: 10}
   direction: {x: 1, y: 0}
   paused: 0

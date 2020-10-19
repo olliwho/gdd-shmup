@@ -31,7 +31,7 @@ public class TimeStopScript : MonoBehaviour
 
         cooldown = 0.0f;
         
-        Destroy(gameObject, 30); // 20sec
+        Destroy(gameObject, 30);
     }
 
     private void Update()
@@ -97,7 +97,7 @@ public class TimeStopScript : MonoBehaviour
         // restart all scrollers
         foreach (var scroller in scollers)
         {
-            scroller.enabled = true;
+            if(scroller) scroller.enabled = true;
         }
         foreach (var weapon in allWeapons)
         {
@@ -105,7 +105,7 @@ public class TimeStopScript : MonoBehaviour
         }
         foreach (var move in shotsMoving)
         {
-            move.paused = false;
+            if(move) move.paused = false;
         }
         
         

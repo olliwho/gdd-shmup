@@ -1,8 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-using Object = UnityEngine.Object;
 
 /// <summary>
 /// Player controller and behavior
@@ -48,7 +44,7 @@ public class PlayerScript : MonoBehaviour
 		if (shoot)
 		{
 			WeaponScript weapon = GetComponent<WeaponScript>();
-			if (weapon != null)
+			if (weapon)
 			{
 				// false because the player is not an enemy
 				weapon.Attack(false);
@@ -59,7 +55,7 @@ public class PlayerScript : MonoBehaviour
 		if (areaShoot)
 		{
 			AreaWeaponScript weapon = GetComponent<AreaWeaponScript>();
-			if (weapon != null)
+			if (weapon)
 			{
 				// false because the player is not an enemy
 				weapon.Attack(false);
@@ -98,7 +94,7 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
         // 5 - Get the component and store the reference
-        if (rigidbodyComponent == null) rigidbodyComponent = GetComponent<Rigidbody2D>();
+        if (!rigidbodyComponent) rigidbodyComponent = GetComponent<Rigidbody2D>();
 
         // 6 - Move the game object
         rigidbodyComponent.velocity = movement;
@@ -110,11 +106,11 @@ public class PlayerScript : MonoBehaviour
 
 		// Collision with enemy
 		EnemyScript enemy = collision.gameObject.GetComponent<EnemyScript>();
-		if (enemy != null)
+		if (enemy)
 		{
 			// Kill the enemy
 			HealthScript enemyHealth = enemy.GetComponent<HealthScript>();
-			if (enemyHealth != null) enemyHealth.Damage(enemyHealth.hp);
+			if (enemyHealth) enemyHealth.Damage(enemyHealth.hp);
 			
 			//make explosion
 			enemyHealth.ExplosionAnimation(explosionPrefab);
@@ -128,13 +124,13 @@ public class PlayerScript : MonoBehaviour
 		if (damagePlayer)
 		{
 			HealthScript playerHealth = GetComponent<HealthScript>();
-			if (playerHealth != null) playerHealth.Damage(1);
+			if (playerHealth) playerHealth.Damage(1);
 		}
 		
 		
 		// Collision with area shot ammo
 		AreaAmmoScript ammo = collision.gameObject.GetComponent<AreaAmmoScript>();
-		if(ammo != null)
+		if(ammo)
 		{
 			AreaWeaponScript weapon = GetComponent<AreaWeaponScript>();
 			if(weapon)
@@ -147,15 +143,15 @@ public class PlayerScript : MonoBehaviour
 		
 		// Collision with time stop
 		TimeStopScript timeStop = collision.gameObject.GetComponent<TimeStopScript>();
-		if(timeStop != null)
+		if(timeStop)
 		{
 			// disable box collider
 			BoxCollider2D bc = timeStop.gameObject.GetComponent<BoxCollider2D>();
-			if (bc != null) bc.enabled = false;
+			if (bc) bc.enabled = false;
 
 			// disable renderer
 			SpriteRenderer sr = timeStop.gameObject.GetComponent<SpriteRenderer>();
-			if (sr != null) sr.enabled = false;
+			if (sr) sr.enabled = false;
 			
 			timeStop.StopTime();
 		}
