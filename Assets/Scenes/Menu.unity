@@ -951,8 +951,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Use the WASD keys to control the syringe and left ctrl (or left click)
-    to shoot the virus!
+  m_Text: 'Use the WASD keys to control the syringe and space (or left click) to
+    shoot the virus!
 
     Collect pills for special attacks (alt or right click),
     and hourglasses to stop the time! '
